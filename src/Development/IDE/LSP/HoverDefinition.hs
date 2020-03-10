@@ -16,7 +16,7 @@ import           Development.IDE.Types.Logger
 import           Development.Shake
 import qualified Language.Haskell.LSP.Core       as LSP
 import           Language.Haskell.LSP.Messages
-import           Language.Haskell.LSP.Types
+import           Language.Haskell.LSP.Types      hiding (toNormalizedFilePath)
 
 import qualified Data.Text as T
 

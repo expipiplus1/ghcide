@@ -9,7 +9,7 @@ where
 
 import qualified Language.Haskell.LSP.Core     as LSP
 import           Language.Haskell.LSP.Messages
-import           Language.Haskell.LSP.Types
+import           Language.Haskell.LSP.Types    hiding (toNormalizedFilePath)
 import           Data.Functor
 import           Data.Generics
 import           Data.Maybe

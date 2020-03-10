@@ -10,7 +10,7 @@ module Development.IDE.LSP.Notifications
 
 import           Development.IDE.LSP.Server
 import qualified Language.Haskell.LSP.Core        as LSP
-import           Language.Haskell.LSP.Types
+import           Language.Haskell.LSP.Types       hiding (toNormalizedFilePath)
 import qualified Language.Haskell.LSP.Types       as LSP
 
 import           Development.IDE.Core.IdeConfiguration

@@ -3,7 +3,7 @@
 module Development.IDE.Plugin.Completions(plugin) where
 
 import Language.Haskell.LSP.Messages
-import Language.Haskell.LSP.Types
+import Language.Haskell.LSP.Types hiding (toNormalizedFilePath)
 import qualified Language.Haskell.LSP.Core as LSP
 import qualified Language.Haskell.LSP.VFS as VFS
 import Language.Haskell.LSP.Types.Capabilities

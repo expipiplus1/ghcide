@@ -8,7 +8,7 @@
 -- | Go to the definition of a variable.
 module Development.IDE.Plugin.CodeAction(plugin) where
 
-import           Language.Haskell.LSP.Types
+import Language.Haskell.LSP.Types hiding (toNormalizedFilePath)
 import Control.Monad (join)
 import Development.IDE.Plugin
 import Development.IDE.GHC.Compat

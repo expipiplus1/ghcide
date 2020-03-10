@@ -82,7 +82,7 @@ import           Data.Time
 import           GHC.Generics
 import           System.IO.Unsafe
 import           Numeric.Extra
-import Language.Haskell.LSP.Types
+import Language.Haskell.LSP.Types hiding (toNormalizedFilePath)
 
 
 -- information we stash inside the shakeExtra field
