@@ -43,7 +43,6 @@ import Language.Haskell.LSP.Types as LSP (
   , normalizedFilePathToUri
   , uriToNormalizedFilePath
   )
-import qualified Language.Haskell.LSP.Types as LSP (toNormalizedFilePath)
 import SrcLoc as GHC
 import Text.ParserCombinators.ReadP as ReadP
 
