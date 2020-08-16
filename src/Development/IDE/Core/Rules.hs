@@ -12,7 +12,7 @@
 --
 module Development.IDE.Core.Rules(
     IdeState, GetDependencies(..), GetParsedModule(..), TransitiveDependencies(..),
-    Priority(..), GhcSessionIO(..),
+    Priority(..), GhcSessionIO(..), GetClientSettings(..),
     priorityTypeCheck,
     priorityGenerateCore,
     priorityFilesOfInterest,
@@ -72,6 +72,7 @@ import DynFlags (gopt_set, xopt)
 import GHC.Generics(Generic)
 
 import qualified Development.IDE.Spans.AtPoint as AtPoint
+import Development.IDE.Core.IdeConfiguration
 import Development.IDE.Core.Service
 import Development.IDE.Core.Shake
 import Development.Shake.Classes hiding (get, put)
@@ -784,6 +785,12 @@ isFileOfInterestRule = defineEarlyCutoff $ \IsFileOfInterest f -> do
     let res = f `elem` filesOfInterest
     return (Just (if res then "1" else ""), ([], Just res))
 
+
+getClientSettingsRule :: Rules ()
+getClientSettingsRule = defineNoFile $ \GetClientSettings -> do
+  alwaysRerun
+  clientSettings <$> getIdeConfiguration
+
 -- | A rule that wires per-file rules together
 mainRule :: Rules ()
 mainRule = do
@@ -802,6 +809,7 @@ mainRule = do
     isFileOfInterestRule
     getModSummaryRule
     isHiFileStableRule
+    getClientSettingsRule
 
 -- | Given the path to a module src file, this rule returns True if the
 -- corresponding `.hi` file is stable, that is, if it is newer
