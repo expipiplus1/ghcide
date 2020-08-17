@@ -848,9 +848,10 @@ isFileOfInterestRule = defineEarlyCutoff $ \IsFileOfInterest f -> do
 
 
 getClientSettingsRule :: Rules ()
-getClientSettingsRule = defineNoFile $ \GetClientSettings -> do
+getClientSettingsRule = defineEarlyCutOffNoFile $ \GetClientSettings -> do
   alwaysRerun
-  clientSettings <$> getIdeConfiguration
+  settings <- clientSettings <$> getIdeConfiguration
+  return (BS.pack . show . hash $ settings, settings)
 
 -- | A rule that wires per-file rules together
 mainRule :: Rules ()
