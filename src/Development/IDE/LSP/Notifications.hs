@@ -98,4 +98,5 @@ setHandlersNotifications = PartialHandlers $ \WithMessage{..} x -> return x
             let msg = Text.pack $ show cfg
             logInfo (ideLogger ide) $ "Configuration changed: " <> msg
             modifyClientSettings ide (const $ Just cfg)
+            setSomethingModified ide
     }
