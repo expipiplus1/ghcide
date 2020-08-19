@@ -268,4 +268,4 @@ instance Hashable GetClientSettings
 instance NFData   GetClientSettings
 instance Binary   GetClientSettings
 
-type instance RuleResult GetClientSettings = Maybe Value
+type instance RuleResult GetClientSettings = Hashed (Maybe Value)
